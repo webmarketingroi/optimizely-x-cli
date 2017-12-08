@@ -10,7 +10,7 @@ Optimizely-X-CLI includes a command line executable that also integrates with ei
 or [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (Firefox) browser extensions 
 for local development / preview and the Optimizely REST API for publishing tests.
 
-This tool is based on the `optimizely-cli` project by FunnelEnvy.
+This tool is based on the [optimizely-cli](https://github.com/FunnelEnvy/optimizely-cli) project by FunnelEnvy.
 
 ## Installation
 
