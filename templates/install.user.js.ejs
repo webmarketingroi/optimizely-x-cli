@@ -1,0 +1,20 @@
+// ==UserScript==
+// @name         Optimizely-cli Injection Script
+// @author       FunnelEnvy
+// @homepage     http://www.funnelenvy.com/optimizely-cli
+// @source       https://github.com/funnelenvy/optimizely-cli
+// @namespace    optcli
+// @description  Inject local experiment JS / CSS into a Chrome page for development 
+// @include      /optcli=activate/
+// @require      http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js
+// ==/UserScript==
+
+var scriptElement = document.createElement('script');
+scriptElement.type = 'text/javascript';
+scriptElement.src =  '//192.168.56.102:<%- _port %>/variation.js';
+document.head.appendChild(scriptElement);
+
+var stylesheet = document.createElement('link');
+stylesheet.rel = 'stylesheet';
+stylesheet.href = '//192.168.56.102:<%- _port %>/variation.css';
+document.head.appendChild(stylesheet);
