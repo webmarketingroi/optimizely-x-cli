@@ -1,13 +1,13 @@
 # Optimizely X Command Line Interface
 
 Optimizely-X-CLI (`optxcli`) is a command line tool that lets developers build Optimizely X experiments 
-faster by using the sofware tools you already love and publish to Optimizely X when ready. With this tool
-you can use your own source code editors (like Vim or Notepad++) and Git to develop Optimizely experiments and variations locally 
-- and this had a *significant* positive impact on our test velocity.
+faster by using the sofware tools you already love, and publish to Optimizely X when ready. With this tool
+you can use your own source code editors (like Vim or Notepad++) and Git to develop Optimizely experiments 
+and variations locally. This had a *significant* positive impact on our test velocity.
 
 Optimizely-X-CLI includes a command line executable that also integrates with either the 
 [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) (Google Chrome) 
-or [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (Firefox) extensions 
+or [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (Firefox) browser extensions 
 for local development / preview and the Optimizely REST API for publishing tests.
 
 This tool is based on the `optimizely-cli` project by FunnelEnvy.
