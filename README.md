@@ -3,7 +3,7 @@
 Optimizely-X-CLI (`optxcli`) is a command line tool that lets developers build Optimizely X experiments 
 faster by using the sofware tools you already love, and publish to Optimizely X when ready. With this tool
 you can use your own source code editors (like Vim or Notepad++) and Git to develop Optimizely experiments 
-and variations locally. This had a *significant* positive impact on our test velocity.
+and variations locally. This had a *significant* positive impact on the test velocity.
 
 Optimizely-X-CLI includes a command line executable that also integrates with either the 
 [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) (Google Chrome) 
@@ -36,11 +36,16 @@ View available commands
 ```
 optxcli init [options] [project_id]
 ```
-Initializes a new Optimizely project locally (use `-r` for remote).
+Initializes a new Optimizely X project locally.
+
+Options:
+
+ - `-r` - pull the remote project with `project_id`.
 
 ```
 optxcli experiment <folder> <description> <url>
 ```
+
 Create a local experiment
 
 ```
