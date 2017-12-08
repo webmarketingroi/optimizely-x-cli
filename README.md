@@ -57,7 +57,7 @@ optxcli experiment <folder> <description> <url>
 optxcli variation <experiment> <folder> <description>
 ```
 
-## Host a variation locally
+### Host a variation locally
 
 Point your browser at http(s)://localhost:8080 (default host and port) for usage info.
 
@@ -70,15 +70,18 @@ Options:
  - `-s` - use the self-signed SSL certificate (if you use HTTPS)
  
 ### Push a local experiment to Optimizely.
+
+Push (create or update) an experiment to Optimizely X through the REST API. This will 
+create a new experiment remotely if it hasn’t been pushed before, or update the existing Optimizely experiment 
+and its variations if it has.
  
 ```
 optxcli push-experiment <path>
 ```
 
-Push (create or update) an experiment to Optimizely X through the REST API. This will 
-create a new experiment remotely if it hasn’t been pushed before, or update the existing Optimizely experiment 
-and its variations if it has.
+Arguments:
 
+ - `<path>` – The path to the experiment directory. Required.
 
 ## Copyright and license
 
