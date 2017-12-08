@@ -39,7 +39,9 @@ optxcli
 Before you create an experiment or variation you’ll want to initialize a project. 
 If have an existing project and have been issued an API key you can use the remote 
 (-r) option, and if not just create it locally. You’ll need to specify the project 
-id (required):
+id (required). This command will prompt for a Optimizely's personal API token 
+(see [this page](https://help.optimizely.com/Integrate_Other_Platforms/Generate_a_personal_access_token_in_Optimizely_X_Web) 
+for instructions on how to get it).
 
 ```
 optxcli init [options] <project_id>
@@ -117,6 +119,16 @@ Arguments:
 
  - `<path>` – The path to the experiment directory. Required.
 
+ 
+### Set API personal token
+
+Set personal token for authentication. The token will be saved to the `.optcli` folder inside the project folder.
+
+```
+optxcli set-token <token>
+``` 
+ 
+ 
 ## Copyright and license
 
 Code copyright 2017 Web Marketing ROI. Released under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).
