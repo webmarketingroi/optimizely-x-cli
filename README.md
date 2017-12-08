@@ -47,7 +47,7 @@ optxcli init [options] <project_id>
 
 Argument:
 
- - `project_id` - the Optimizely X project ID
+ - `project_id` - the Optimizely X project ID. Required.
 
 Options:
 
@@ -73,14 +73,15 @@ Arguments:
 Create a local variation and scaffold the source files
 
 ```
-optxcli variation <experiment> <folder> <description>
+optxcli variation <experiment> <folder> <description> <traffic_allocation>
 ```
 
 Arguments:
 
  - `<experiment>` – The directory or id of the experiment. Required.
  - `<folder>` – The new folder (directory) that will be created for the variation. Required.
- - `<description>` – The variation description that will show up in Optimizely. Required
+ - `<description>` – The variation description that will show up in Optimizely. Required.
+ - `<traffic_allocation>` - The percentage of traffic allocation. Required.
 
 ### Host a variation locally
 
