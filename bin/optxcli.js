@@ -45,9 +45,9 @@ program
   .action(loadCommand("create-variation"));
 
 program
-  .command("host <path> [port]")
+  .command("host <path> [port] [host]")
   .option("-s --ssl", "SSL")
-  .option("-o --open", "Open the localhost index page")
+  .option("-o --open", "Open the index page")
   .description("Host variation locally")
   .action(loadCommand("host"));
 
