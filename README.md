@@ -26,7 +26,7 @@ This will install the `optxcli` executable on your system.
 You'll need to have [Node.js](http://nodejs.org/) installed locally to run `optxcli` and either the 
 Tampermonkey or Greasemonkey browser extensions to view variations locally.
 
-## Optimizely Authorization
+## Optimizely Authentication
 
 Optimizely's REST API uses OAuth 2.0 for authorization.
 Therefore the Optimizely-X-CLI tool will prompt for a Optimizely's personal API token 
@@ -44,7 +44,7 @@ optxcli
 ### Initialize a new Optimizely X project in current directory
 
 Before you create an experiment or variation you’ll want to initialize a project. 
-If have an existing project and have been issued an API key you can use the remote 
+If you have an existing project and have been issued a personal API token you can use the remote 
 (-r) option, and if not just create it locally. You’ll need to specify the project 
 id (required). 
 
@@ -127,12 +127,15 @@ Arguments:
  
 ### Set API personal token
 
-Set personal token for authentication. The token will be saved to the `.optcli` folder inside the project folder.
+Set/rewrite the personal API token for authentication. The token will be saved to the `.optcli` folder inside the project folder.
 
 ```
 optxcli set-token <token>
 ``` 
- 
+
+Arguments:
+
+ - `<token>` - the personal API token used for Optimizely authentication. 
  
 ## Copyright and license
 
