@@ -10,7 +10,8 @@ Optimizely-X-CLI includes a command line executable that also integrates with ei
 or [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (Firefox) browser extensions 
 for local development / preview and the Optimizely REST API for publishing tests.
 
-This tool is based on the [optimizely-cli](https://github.com/FunnelEnvy/optimizely-cli) project by FunnelEnvy.
+Optimizely-X-CLI was proudly developed by Optimizely Solutions Partner, [Web Marketing ROI](https://webmarketingroi.com.au). 
+This tool is orignally based on the [optimizely-cli](https://github.com/FunnelEnvy/optimizely-cli) project by FunnelEnvy.
 
 ## Installation
 
@@ -25,48 +26,59 @@ This will install the `optxcli` executable on your system.
 You'll need to have [Node.js](http://nodejs.org/) installed locally to run `optxcli` and either the 
 Tampermonkey or Greasemonkey browser extensions to view variations locally.
 
-## Quickstart
+## Commands
+
+### View available commands
 
 ```
 optxcli
 ```
 
-View available commands
+### Initialize a new Optimizely X project in current directory
 
 ```
 optxcli init [options] [project_id]
 ```
-Initializes a new Optimizely X project locally.
 
 Options:
 
- - `-r` - pull the remote project with `project_id`.
-
+ - `-r --remote` - pull the remote project with `project_id`
+ - `-j --jquery` - include jQuery
+ 
+### Create a local experiment
+ 
 ```
 optxcli experiment <folder> <description> <url>
 ```
 
-Create a local experiment
+### Create a local variation
 
 ```
 optxcli variation <experiment> <folder> <description>
 ```
-Create a local variation
+
+## Host a variation locally
+
+Point your browser at http(s)://localhost:8080 (default host and port) for usage info.
 
 ```
 optxcli host [options] <path> [port]
 ```
-Host a variation locally. Point your browser at http(s)://localhost:8080 (default port) for usage info.
 
-```
-optcli push-experiment <path>
-```
-Push a local experiment to Optimizely.
+Options:
 
+ - `-s` - use the self-signed SSL certificate (if you use HTTPS)
+ 
+### Push a local experiment to Optimizely.
+ 
 ```
-optcli push-variation <path>
+optxcli push-experiment <path>
 ```
-Push a local variation to Optimizely
+
+Push (create or update) an experiment to Optimizely X through the REST API. This will 
+create a new experiment remotely if it hasn’t been pushed before, or update the existing Optimizely experiment 
+and its variations if it has.
+
 
 ## Copyright and license
 
