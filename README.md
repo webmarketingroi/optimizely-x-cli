@@ -26,6 +26,13 @@ This will install the `optxcli` executable on your system.
 You'll need to have [Node.js](http://nodejs.org/) installed locally to run `optxcli` and either the 
 Tampermonkey or Greasemonkey browser extensions to view variations locally.
 
+## Optimizely Authorization
+
+Optimizely's REST API uses OAuth 2.0 for authorization.
+Therefore the Optimizely-X-CLI tool will prompt for a Optimizely's personal API token 
+(see [this page](https://help.optimizely.com/Integrate_Other_Platforms/Generate_a_personal_access_token_in_Optimizely_X_Web) 
+for instructions on how to get it).
+
 ## Commands
 
 ### View available commands
@@ -39,9 +46,7 @@ optxcli
 Before you create an experiment or variation you’ll want to initialize a project. 
 If have an existing project and have been issued an API key you can use the remote 
 (-r) option, and if not just create it locally. You’ll need to specify the project 
-id (required). This command will prompt for a Optimizely's personal API token 
-(see [this page](https://help.optimizely.com/Integrate_Other_Platforms/Generate_a_personal_access_token_in_Optimizely_X_Web) 
-for instructions on how to get it).
+id (required). 
 
 ```
 optxcli init [options] <project_id>
