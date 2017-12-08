@@ -36,9 +36,18 @@ optxcli
 
 ### Initialize a new Optimizely X project in current directory
 
+Before you create an experiment or variation you’ll want to initialize a project. 
+If have an existing project and have been issued an API key you can use the remote 
+(-r) option, and if not just create it locally. You’ll need to specify the project 
+id (required):
+
 ```
-optxcli init [options] [project_id]
+optxcli init [options] <project_id>
 ```
+
+Argument:
+
+ - `project_id` - the Optimizely X project ID
 
 Options:
 
@@ -46,25 +55,49 @@ Options:
  - `-j --jquery` - include jQuery
  
 ### Create a local experiment
- 
+
+Create a local experiment under a project with the command: 
+
 ```
 optxcli experiment <folder> <description> <url>
 ```
 
+Arguments:
+
+ - `<folder>` – The folder (directory) for the new experiment. Required.
+ - `<description>` – The experiment description that will show up in Optimizely. Required
+ - `<edit_url>` – The default editor url for the experiment. Required.
+
 ### Create a local variation
+
+Create a local variation and scaffold the source files
 
 ```
 optxcli variation <experiment> <folder> <description>
 ```
 
+Arguments:
+
+ - `<experiment>` – The directory or id of the experiment. Required.
+ - `<folder>` – The new folder (directory) that will be created for the variation. Required.
+ - `<description>` – The variation description that will show up in Optimizely. Required
+
 ### Host a variation locally
 
-Point your browser at http(s)://localhost:8080 (default host and port) for usage info.
+Compiles the experiment and variation CSS / JS, creates a user script for injection and 
+starts a local web server to host the files. Pointing your browser to the root URL 
+(default http://localhost:8080) will show a page with installation steps and variation URLs.
 
 ```
-optxcli host [options] <path> [port]
+optxcli host [options] <path> [port] [host]
 ```
 
+Arguments:
+
+ - `<path>` – Path to the variation directory. Required.
+ - `[port]` – Port to host the server. Default to 8080.
+ - `[host]` - Hostname. Default to localhost.
+ 
 Options:
 
  - `-s` - use the self-signed SSL certificate (if you use HTTPS)
