@@ -28,7 +28,10 @@ utils.init = function(directory, options) {
     include_jquery = false;
   }
   var initialDir = __dirname;
-  var program = {remote: false, jquery: include_jquery};
+  var program = {
+      remote: false, 
+      jquery: include_jquery
+  };
   process.chdir(directory);
   initProject(projectID, program);
   

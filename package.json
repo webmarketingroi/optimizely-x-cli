@@ -1,4 +1,4 @@
-{
+    {
   "name": "optimizely-x-cli",
   "version": "0.1.0",
   "description": "A command line application to create Optimizely X experiments and publish via the API",
@@ -30,7 +30,7 @@
     "glob": "^4.2.2",
     "lodash": "^2.4.1",
     "open": "0.0.5",
-    "optimizely-node-client": "^0.1.0",
+    "optimizely-x-node": "",
     "promptly": "^0.2.0",
     "q": "^1.1.2"
   },
