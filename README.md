@@ -3,7 +3,7 @@
 Optimizely-X-CLI (`optxcli`) is a command line tool that lets developers build Optimizely X experiments 
 faster by using the sofware tools you already love, and publish to Optimizely X when ready. With this tool
 you can use your own source code editors (like Vim or Notepad++) and Git to develop Optimizely experiments 
-and variations locally. This had a *significant* positive impact on the test velocity.
+and variations locally. This has a significant positive impact on the test velocity.
 
 Optimizely-X-CLI includes a command line executable that also integrates with either the 
 [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) (Google Chrome) 
@@ -12,6 +12,57 @@ for local development / preview and the Optimizely REST API for publishing tests
 
 Optimizely-X-CLI was proudly developed by Optimizely Solutions Partner, [Web Marketing ROI](https://webmarketingroi.com.au). 
 This tool is orignally based on the [optimizely-cli](https://github.com/FunnelEnvy/optimizely-cli) project by FunnelEnvy.
+
+## Features
+
+### Local file system
+
+Optimizely-X-CLI uses local files for the experiment and variation code (CSS & javascript). These 
+include the variation javascript (variation.js) and experiment global.css and global.js. Variations, 
+experiments and projects are in a nested directory structure which mimics Optimizely’s structure. 
+Metadata for these elements are stored in json files – specifically project.json, experiment.json 
+and variation.json files. Since everything is on the local filesystem you can obviously your 
+favorite editors and source control tools to write, manage and share everything.
+
+### Command Line Executable
+
+Optimizely-X-CLI includes a command line executable, `optxcli`. Optxcli will create the local 
+project experiment and variation structure for you, host the local variation for debugging, 
+and publish to Optimizely.
+
+### Local Hosting & Script Injection
+
+Injecting the experiment and variation code directly into the local browser makes for faster 
+development & debug cycles. `optxcli` includes an `express.js` based server that will compile 
+and host a variation locally, and will generate a GreaseMonkey or TamperMonkey compliant user 
+script to inject the CSS and JS into any page. Make a code change and refresh the browser – 
+your variation changes will be immediately applied without restarting the server.
+
+Targeting a page served over https? Not a problem! Optxcli includes a self-signed certificate 
+and can host over ssl with the `-s` option.
+
+Script injection works by writing CSS and JS elements into the page, and targets any page which 
+has an `optcli=activate` parameter. You can therefore run the variation code against any page 
+by appending this parameter.
+
+### Embedded Javascript
+
+The `variation.js` and `global.js` files can contain embedded javascript (ejs), and are compiled 
+before local hosting or being sent to Optimizely. That means you can use iterators or other 
+logic expressions directly in your template.
+
+### Assets
+
+As part of the of EJS templates, you can create an `assets.json` file in your experiment directory 
+with key / value pairs. These will be available for interpolation when the javascript files are 
+compiled. This  can be handy when you write a test where you have to replace lots of images.
+
+### Publish
+
+With the `push-experiment` command `optxcli` lets you push your code directly to Optimizely 
+via the REST API. You’ll have to have an API personal token with the appropriate permmissions 
+issued for the project of course. Once the code is in Optimizely you’ll want to go in and 
+adjust the other test parameters (targeting, activation conditions, etc) per your test requirements.
 
 ## Installation
 
