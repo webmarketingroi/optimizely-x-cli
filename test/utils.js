@@ -21,6 +21,8 @@ var projectID = 12345;
  * specified in the options object
  */
 utils.init = function(directory, options) {
+  console.log("init!");
+  
   var include_jquery;
   if(options && options.jquery) {
     include_jquery = options.jquery;
@@ -47,6 +49,7 @@ utils.init = function(directory, options) {
  * specified in the options object
  */
 utils.experiment = function(directory, options) {
+  console.log("experiment!");
   if(!options) options = {};
   createExperiment(directory, experimentName, editURL, options);
   return {
@@ -61,6 +64,7 @@ utils.experiment = function(directory, options) {
  * specified in the options object
  */
 utils.variation = function(experimentDirectory, variationFolder, variationName) {
+  console.log("variation!");
   program = {};
   createVariation(experimentDirectory, variationFolder, variationName, program);
 }

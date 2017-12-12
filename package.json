@@ -7,7 +7,7 @@
     "optxcli": "bin/optxcli.js"
   },
   "scripts": {
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec"
+    "test": "mocha test"
   },
   "repository": "https://github.com/webmarketingroi/optimizely-x-cli.git",
   "keywords": [

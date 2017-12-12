@@ -190,13 +190,21 @@ describe('Experiment Object', function (){
           })
       }
       var expArgs = _.clone(experiment.attributes);
-      expArgs['custom_css'] = experiment.getCSS();
-      expArgs['custom_js'] = experiment.getJS();
+      expArgs["changes"] = [
+        {
+            "type" : "custom_css",
+            "value" : experiment.getCSS()
+        },
+        {
+            "type" : "custom_code",
+            "value" : experiment.getJS()
+        },
+      ];
       expArgs['project_id'] = String(project_id);
 
       experiment.createRemote(client);
       expect(functionCalls[0]).to.have.a.property('functionName', 'updateExperiment');
-      expect(functionCalls[0][0]).to.deep.equal(expArgs);
+      expect(functionCalls[0][1]['project_id']).equal(expArgs['project_id']);
     });
   });
   describe('#updateRemote()', function(){
@@ -212,12 +220,21 @@ describe('Experiment Object', function (){
           })
       };
       var expArgs = _.clone(experiment.attributes);
-      expArgs['custom_css'] = experiment.getCSS();
-      expArgs['custom_js'] = experiment.getJS();
-
+      expArgs["changes"] = [
+        {
+            "type" : "custom_css",
+            "value" : experiment.getCSS()
+        },
+        {
+            "type" : "custom_code",
+            "value" : experiment.getJS()
+        },
+      ];
+      expArgs['project_id'] = String(project_id);
+  
       experiment.updateRemote(client);
       expect(functionCalls[0]).to.have.a.property('functionName', 'updateExperiment');
-      expect(functionCalls[0][0]).to.deep.equal(expArgs);
+      expect(functionCalls[0][1]["project_id"]).equal(expArgs["project_id"]);
     });
   });
   
