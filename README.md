@@ -113,11 +113,21 @@ optxcli variation test_experiment variation1 "Original" 50
 optxcli variation test_experiment variation2 "Variation 1" 50
 ```
 
-Edit the experiment/variation files as you wish, and then push the experiment and all its variations:
+Edit the experiment/variation files as you wish, and then host the variation on your local machine:
+
+```
+optxcli host test_experiment/variation2 8080 localhost
+```
+
+Direct your browser to the http://localhost:8080 and follow the instructions to see the variation page.
+
+When you have finished with QAing your experiment locally, push it to Optimizely: 
 
 ```
 optxcli push-experiment test_experiment 
 ```
+
+Finally, go to Optimizely UI to adjust audiences and other experiment parameters.
 
 ## Commands
 
