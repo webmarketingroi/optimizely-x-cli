@@ -84,6 +84,41 @@ Therefore the Optimizely-X-CLI tool will prompt for a Optimizely's personal API 
 (see [this page](https://help.optimizely.com/Integrate_Other_Platforms/Generate_a_personal_access_token_in_Optimizely_X_Web) 
 for instructions on how to get it).
 
+## Example
+
+First create a directory for the project:
+
+```
+cd ~
+mkdir my_project
+cd my_project
+```
+
+Init the project (use the project ID from your Optimizely settings page; the project ID also equals to the number from your snippet URL): 
+
+```
+optxcli init -r 7858180040
+```
+
+Create a local experiment with the name `test_experiment`:
+
+```
+optxcli experiment test_experiment "Test experiment" http://yourwebsite.com
+```
+
+Create a couple of variations (50% of traffic allocation each):
+
+```
+optxcli variation test_experiment variation1 "Variation 1" 50
+optxcli variation test_experiment variation2 "Variation 1" 50
+```
+
+Edit the experiment/variation files as you wish, and then push the experiment and all its variations:
+
+```
+optxcli push-experiment test_experiment 
+```
+
 ## Commands
 
 ### View available commands
@@ -161,7 +196,7 @@ Options:
 
  - `-s` - use the self-signed SSL certificate (if you use HTTPS)
  
-### Push a local experiment to Optimizely.
+### Push a local experiment to Optimizely
 
 Push (create or update) an experiment to Optimizely X through the REST API. This will 
 create a new experiment remotely if it hasn’t been pushed before, or update the existing Optimizely experiment 
