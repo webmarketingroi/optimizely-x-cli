@@ -44,7 +44,7 @@ describe('Host Command', function(){
         // Don't host until all files are created, or test.html might be empty/non-existent
         oldDir = process.cwd();
         process.chdir(directory.project);
-        server = host(directory.variation, 9569 , {ssl: false, silence: true, open: true});
+        server = host(directory.variation, 9569 , "localhost", {ssl: false, silence: true, open: true});
         done();
       })
       .catch(function(error){

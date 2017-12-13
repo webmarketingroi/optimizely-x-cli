@@ -14,15 +14,13 @@ var logger = require("../../lib/logger.js");
 // logger.debugLevel = 'debug';
 
 var ClientStub = function() {};
-var VariationClientStub = sinon.spy();
 var options = {
   'cwd': __dirname
 };
 var directory = {};
 
 var pushExperiment = proxyquire('../../lib/commands/push-experiment', { 
-  'optimizely-node-client': ClientStub,
-  './push-variation': VariationClientStub
+  'optimizely-x-node-client': ClientStub
  });
 
 describe('Push Experiment Command', function() {
@@ -31,10 +29,12 @@ describe('Push Experiment Command', function() {
     quickTemp.makeOrRemake(directory, 'project');
     options.cwd = directory.project;
     directory.experiment = directory.project + '/test-experiment/';
-
+    directory.variation = directory.experiment + '/test-variation';
+    
     //Initialize the project and create experiment
     utils.init(directory.project);
-    utils.experiment(directory.experiment)
+    utils.experiment(directory.experiment);
+    utils.variation(directory.experiment, '/test-variation', 'Variation 1');
     utils.createOptimizelyToken(directory.project);
     process.chdir(directory.project);
     done();
@@ -43,7 +43,7 @@ describe('Push Experiment Command', function() {
 
   after(function() {
     //Remove the temporary directory  
-    quickTemp.remove(directory, 'project');
+    //quickTemp.remove(directory, 'project');
   });
 
   beforeEach(function() {
@@ -65,7 +65,7 @@ describe('Push Experiment Command', function() {
       var experimentMeta = JSON.parse(fs.readFileSync(directory.experiment + 'experiment.json'));
       assert(experimentMeta.id === "1234", "Invalid experiment id");
       done();
-    }, 10);
+    }, 20);
   });
 
   it('Should update a remote experiment', function(done) {
@@ -82,33 +82,5 @@ describe('Push Experiment Command', function() {
       assert(experimentMeta.id === "1234", "Invalid experiment id");
       done();
     }, 10);
-  });
-  describe("Iterate Option",function(done) {
-    before(function(done) {
-      var variationAFolder = 'test-variation-a/';
-      var variationBFolder = 'test-variation-b/';
-      directory.variation = {};
-      directory.variation.a = directory.experiment + variationAFolder;
-      directory.variation.b = directory.experiment + variationBFolder;
-      options.multipleVariations = true;
-
-
-      utils.variation(directory.experiment, variationAFolder, 'Variation A');
-      utils.variation(directory.experiment, variationBFolder, 'Variation B');
-      process.chdir(directory.project);
-      done();
-    });
-    it('Should push multiple variations', function(done) {
-      utils.addIdToFile(directory.variation.a + 'variation.json', '4567');
-      utils.addIdToFile(directory.variation.b + 'variation.json', '4567');
-
-      pushExperiment(directory.experiment, {iterate: true});
-
-      setTimeout(function() {
-        assert(VariationClientStub.called, "pushVariation was not called");
-        done();
-      }, 10);
-
-    });
   });
 });
