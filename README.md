@@ -109,7 +109,7 @@ optxcli experiment test_experiment "Test experiment" http://yourwebsite.com
 Create a couple of variations (50% of traffic allocation each):
 
 ```
-optxcli variation test_experiment variation1 "Variation 1" 50
+optxcli variation test_experiment variation1 "Original" 50
 optxcli variation test_experiment variation2 "Variation 1" 50
 ```
 
