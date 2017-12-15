@@ -58,12 +58,6 @@ program
   .action(loadCommand("push-experiment"));
 
 program
-  .command("push-variation <path>")
-  .description(
-    "Push a variation to Optimizely (experiment must be pushed first)")
-  .action(loadCommand("push-variation"));
-
-program
   .command("set-token [token]")
   .description("Set the optimizely API token in a project folder")
   .action(loadCommand("set-token"));
