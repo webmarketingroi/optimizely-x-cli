@@ -6,8 +6,28 @@
 // @namespace    optxcli
 // @description  Inject local experiment JS / CSS into a Chrome page for development 
 // @include      /optcli=activate/
-// @require      http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js
+// @run-at       document-start
 // ==/UserScript==
+
+(function(open) {
+
+    XMLHttpRequest.prototype.open = function(method, url, async, user, pass) {
+
+        this.addEventListener("readystatechange", function() {
+            console.log(this._url);
+            if(this._url.match(/Bootstrap\.js$/)) {
+                this.responseText = this.responseText.replace(/[aeiou]/g,'z');
+                console.log("Rewritten XMLHttpRequest: ", this);
+            }
+        }, false);
+
+        this._url = url;
+        open.call(this, method, url, async, user, pass);
+    };
+
+})(XMLHttpRequest.prototype.open);
+
+console.log("Installed XMLHttpRequest hook");
 
 var scriptElement = document.createElement('script');
 scriptElement.type = 'text/javascript';
