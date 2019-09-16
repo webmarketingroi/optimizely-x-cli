@@ -70,6 +70,8 @@ adjust the other test parameters (targeting, activation conditions, etc) per you
 npm install -g optimizely-x-cli
 ```
 
+If it complaints about missing permissions, prepend `sudo` before the command.
+
 This will install the `optxcli` executable on your system.
 
 ### Dependencies
